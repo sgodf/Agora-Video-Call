@@ -146,6 +146,7 @@ export default {
 <style lang="scss">
 body, html {
   color: #666;
+  margin: 0;
 }
 #me {
   width: 400px;
