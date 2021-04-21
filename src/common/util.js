@@ -8,13 +8,19 @@ const addVideoStream = function(elementId) {
     streamDiv.id = elementId;
     // 处理镜像问题
     streamDiv.style.transform = 'rotateY(180deg)';
-    let remoteContainer = document.getElementById('remote');
+    streamDiv.className = 'remote';
+    let remoteContainer = document.getElementsByClassName('videoContainer')[0];
     // 将 div 添加到容器
     remoteContainer.appendChild(streamDiv);
 }
-const removeVideoStream = function(elementId) {
-    let remoteDiv = document.getElementById(elementId);
-    if (remoteDiv) remoteDiv.parentNode.removeChild(remoteDiv);
+const removeVideoStream = function(elementId, isRemote) {
+    if (isRemote) {
+      let remoteDiv = document.getElementById(elementId);
+      if (remoteDiv) remoteDiv.parentNode.removeChild(remoteDiv);
+    } else {
+      let parentDiv = document.getElementById('me');
+      if (parentDiv.firstChild) parentDiv.removeChild(parentDiv.firstChild);
+    }
 }
 export default {
     handlerError,
